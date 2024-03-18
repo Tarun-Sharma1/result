@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <style>
+        /* Styling for overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000; /* Ensure overlay is on top of other elements */
+        }
+        
+        /* Styling for popup */
+        .popup {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+            z-index: 1001; /* Ensure popup is on top of overlay */
+            width: auto !important;
+        }
+        
+        /* Styling for close button */
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <img src="https://goaps.iisc.ac.in/_next/static/media/gate-logo.cfc88884.jpg" alt="">
+        <img src="https://goaps.iisc.ac.in/_next/static/media/gate-name.298a73fb.png" alt="">
+        <img src="https://goaps.iisc.ac.in/_next/static/media/iisc-logo.189e2774.jpg" alt="">
+    </nav>
+
+    <div class="root">
+        <div><p>Enrollment ID: T151S88</p></div>
+        
+        <div class="links">
+            <a href="Home">Home</a>
+            <a href="https://tarun-sharma1.github.io/login/">Logout</a>
+            <a href="">Quick Links</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <main class="main">
+            <div class="login-head">
+                <svg class="svg" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="HomeIcon"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path></svg>
+                <p>&ensp;Welcome, TARUN SHARMA</p> 
+            </div>
+            <div class="card">
+                <div class="status">
+                    <p>Application Status</p>
+                </div>
+                <div class="border">
+                    
+                </div>
+                <div class="details">
+                    <div class="enrollment">
+                        <div style="border-top-left-radius: 12px; border-top-right-radius: 12px;" class="table">
+                            <div class="key">Enrollment Id</div>
+                            <div class="value">T151S88</div>
+                        </div>
+                        <div class="table">
+                            <div class="key">Applicant Name</div>
+                            <div class="value">TARUN SHARMA</div>
+                        </div>
+                        <div style="border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;" class="table">
+                            <div class="key">Applicant Status</div>
+                            <div class="value">Your GATE 2024 results are available for viewing</div>
+                        </div>
+                    </div>
+
+                    <button id="openPopup" class="result">VIEW RESULT (CS)</button>
+                    <div class="overlay" id="overlay">
+                        <div class="popup" id="popup">
+                            <span class="close" id="closePopup">&times;</span>
+                            <iframe src="https://tarun-sharma1.github.io/gate/" width="80vw" height="600px" frameborder="0"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <button id="responses" class="responses">VIEW RESPONSES (CS)</button>
+                <p class="FingerPrint">Digital FingerPrint: 1196312668477c7c7ec59b43f5b66d29</p>
+            </div>
+        </main>
+    </div>
+
+    <div id="footer">
+        <p>Copyright © <a href="https://gate2024.iisc.ac.in/">GATE</a> 2024.</p>
+      </div>
+
+    <script>
+        const openPopupButton = document.getElementById('openPopup');
+        const overlay = document.getElementById('overlay');
+        const closePopupButton = document.getElementById('closePopup');
+        const linkButton=document.getElementById("responses");
+        openPopupButton.addEventListener('click', () => {
+            overlay.style.display = 'flex'; // Display overlay
+            document.body.style.overflow = 'hidden'; // Disable scrolling on background
+        });
+
+        linkButton.addEventListener('click', () => {
+        // Redirect to another webpage when the button is clicked
+        window.open('https://cdn.digialm.com//per/g01/pub/585/touchstone/AssessmentQPHTMLMode1//GATE2399/GATE2399S3D7242/17078215999009391/CS24S58001076_GATE2399S3D7242E1.html', '_blank');
+    });
+
+        // Function to close the popup when the background is clicked
+        function closePopupOnBackgroundClick(event) {
+            // Check if the clicked element is the overlay
+            if (event.target === overlay) {
+                // Hide the overlay
+                overlay.style.display = 'none';
+                // Enable scrolling on background
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Add event listener to close the popup when the background is clicked
+        overlay.addEventListener('click', closePopupOnBackgroundClick);
+    </script>
+</body>
+</html>
